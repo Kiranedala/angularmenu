@@ -1,24 +1,21 @@
-<h1>
-  {{title}}
-</h1>
+ 
+ <side-nav (toggleBlockUI)="toggleBlockUI()" [environment]="environment"></side-nav>
+<div id="win-main-container">
+  <p-blockUI [blocked]="isBlocked">
+    <div class="app-blocker" (click)="closeSideNav()"></div>
+  </p-blockUI>
+  <p-growl class="win-growl" [(value)]="growlSuccessMessages" [life]="5000" [hidden]="!growlSuccessMessageShow"></p-growl>
+  <p-growl class="win-growl" [(value)]="growlErrorMessages" [sticky]="true" *ngIf="growlErrorMessageShow"></p-growl>
+
+<navbar (toggleBlockUI)="toggleBlockUI()"></navbar>
 
 
+  <p-blockUI [blocked]="isBlockedUI">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw win-spinner"></i>
+  </p-blockUI>
 
-<!-- <a class="side-nav-tooltip" [ngClass]="{active: isActive=='1'}" (click)="isActive = '1'" href="http://localhost:8082/#/itembin-details">Receiving</a>
-<a class="side-nav-tooltip" [ngClass]="{active: isActive=='2'}" (click)="isActive = '2'" href="http://windev1:8080/profoundui/auth/genie?workstnid=TESTID&skin=wob&macro=SalesOrderEntry&suffixid=1&var1=Company&value1=054">Sales Person</a>
-<a class="side-nav-tooltip" [ngClass]="{active: isActive=='3'}" (click)="isActive = '3'" href="http://windev1:8080/profoundui/auth/genie?skin=wob&macro=BuyingDiscGroup&var1=Vendor&value1=001434&var2=MFPDVN&value2=NC12DD">Sales Person1</a>
- -->
-
-
-<div class="card card-1" (click)="gotoReceiving()">
-  <div class="container">
-    <h4 class="heading-label"><b>Receiving</b></h4> 
-    <!-- <a href="http://localhost:8082/#/itembin-details">goto Receiving</a> -->
+  <div class="container-fluid" id="containerFluid" (click)="closeSideNav()">
+    <router-outlet></router-outlet>
   </div>
 </div>
-<div class="card card-2"  (click)="gotoSoe()">
-  <div class="container">
-    <h4><b>Soe</b></h4> 
-    <!-- <a href="http://localhost:8082/#/itembin-details">goto Receiving</a> -->
-  </div>
-</div>
+
